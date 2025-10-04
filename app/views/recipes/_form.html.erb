@@ -1,22 +1,22 @@
 <%= form_with model: @recipe do |f| %>
     <div class="mb-3">
         <%= f.label :title %>
-        <%= f.text_field :title, placeholder: "Recipes title", class: "form-control %>
+        <%= f.text_field :title, placeholder: "Recipes title", class: "form-control" %>
     </div>
 
     <div class="mb-3">
         <%= f.label :cook_time %>
-        <%= f.number_field :cook_time, placeholder: "Cook time in minutes", class: "form-control %>
+        <%= f.number_field :cook_time, placeholder: "Cook time in minutes", class: "form-control" %>
     </div>
 
     <div class="mb-3">
         <%= f.label :difficulty %>
-        <%= f.text_field :difficulty, placeholder: "Difficulty level (hard, medium, easy)", class: "form-control %>
+        <%= f.text_field :difficulty, placeholder: "Difficulty level (hard, medium, easy)", class: "form-control" %>
     </div>
 
-    <div class="mb-3">
+    <div class = "mb-3">
         <%= f.label :instructions %>
-        <%= f.rich_text_area :instructions, placeholder: "Write the instructions", class: "form-control %>
+        <%= f.rich_text_area :instructions, placeholder: "Write the instructions", class: "form-control" %>
 
 
     <%= f.submit "Save", class: "btn btn-primary mt-3" %>
