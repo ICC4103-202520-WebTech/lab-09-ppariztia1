@@ -1,0 +1,9 @@
+<div class= "container">
+    <h1><%= @recipe.title %></h1>
+
+    <div>
+        <%= @recipe.content.body %>
+    </div>
+
+    <%= link_to 'Edit', edit_recipe_path(@recipe), class: "btn btn-secondary" %>
+    <%= link_to 'Back', recipes_path, class: "btn btn-primary" %>

@@ -1,0 +1,20 @@
+<%= form_with model: @recipe do |f| %>
+    <div class="mb-3">
+        <%= f.label :title %>
+        <%= f.text_field :title, placeholder: "Recipes title", class: "form-control %>
+    </div>
+
+    <div class="mb-3">
+        <%= f.label :cook_time %>
+        <%= f.number_field :cook_time, placeholder: "Cook time in minutes", class: "form-control %>
+    </div>
+
+    <div class="mb-3">
+        <%= f.label :difficulty %>
+        <%= f.text_field :difficulty, class: "form-control %>
+    </div>
+
+
+    <%= f.submit "Save", class: "btn btn-primary mt-3" %>
+<% end %>
+    
