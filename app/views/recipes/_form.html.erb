@@ -11,8 +11,12 @@
 
     <div class="mb-3">
         <%= f.label :difficulty %>
-        <%= f.text_field :difficulty, class: "form-control %>
+        <%= f.text_field :difficulty, placeholder: "Difficulty level (hard, medium, easy)", class: "form-control %>
     </div>
+
+    <div class="mb-3">
+        <%= f.label :instructions %>
+        <%= f.rich_text_area :instructions, placeholder: "Write the instructions", class: "form-control %>
 
 
     <%= f.submit "Save", class: "btn btn-primary mt-3" %>

@@ -1,9 +1,14 @@
 <div class= "container">
     <h1><%= @recipe.title %></h1>
+    <p>Cook time: <%= @recipe.cook_time %> minutes</p>
+    <p>Difficulty: <%= @recipe.difficulty %></p>
 
+    <h3>Instructions:</h3>
     <div>
-        <%= @recipe.content.body %>
+        <%= @recipe.instructions %>
     </div>
+
+
 
     <%= link_to 'Edit', edit_recipe_path(@recipe), class: "btn btn-secondary" %>
     <%= link_to 'Back', recipes_path, class: "btn btn-primary" %>
