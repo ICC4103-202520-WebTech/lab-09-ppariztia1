@@ -41,10 +41,10 @@ class RecipesController < ApplicationController
     private
     #Strong parameters
     def recipe_params
-        params.require(:recipe).permit(:name, :ingredients, :instructions)
+        params.require(:recipe).permit(:title, :cook_time, :difficulty, :instructions)
     end
 
     def set_recipe
-        @recipe = Recipe.find(params[:id])
+        @recipe = Recipe.find params[:id]
     end
 end
