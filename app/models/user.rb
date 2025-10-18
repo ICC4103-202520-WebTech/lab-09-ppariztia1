@@ -5,4 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :recipes, dependent: :destroy
+
+  enum :role, {
+    normal: 0,
+    admin: 1,
+  }, prefix: true
+
 end
