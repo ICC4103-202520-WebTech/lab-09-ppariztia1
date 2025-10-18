@@ -1,43 +1,48 @@
-=======
-# Lab 6 — Recipe Book Application
+# Lab 8 — Recipe Book Application: Authorization and User Roles
 
 ## Objective
-Build a complete **Ruby on Rails** application for managing a personal recipe book.  
-The application must implement a full CRUD (Create, Read, Update, Delete) for a single model and use **ActionText** for rich text content.
+Extend the Recipe Book application by implementing **authorization** so that only certain users can perform specific actions.  
+You will use either **CanCanCan** or **Pundit** to manage permissions, and define user **roles** in the `User` model using an `enum`.
 
-This lab consolidates what you have learned so far:
-- Building models, controllers, and views in Rails.
-- Using **PostgreSQL** as the database.
-- Styling with **Bootstrap**.
-- Adding **ActionText** for rich text fields.
-- Implementing full CRUD functionality (`index`, `show`, `new`, `edit`, `destroy`).
+By the end of this lab:
+- Users with different roles will have different access levels.
+- You will understand how to define and enforce authorization rules in Rails.
 
 ## Instructions
-1. **Model**
-   - Create a `Recipe` model with the following attributes:
-     - `title` (string): the name of the recipe.
-     - `cook_time` (integer): preparation time in minutes.
-     - `difficulty` (string): level of difficulty (e.g., "Easy", "Medium", "Hard").
-     - `instructions` (ActionText): detailed cooking instructions with formatted text, links, and images.
+1. **Add Roles to the User Model**
+   - Add an `enum` field called `role` to the `User` model.  
+     Suggested roles:
+       - `regular` (default)
+       - `admin`
+   - Update or seed the database to include at least one admin user.
 
-2. **Database**
-   - Use **PostgreSQL** as the database engine.
+2. **Choose an Authorization Library**
+   - Use either **CanCanCan** or **Pundit** for this lab.  
+   - Install and configure the gem following its documentation.
+   - Create the necessary files (`Ability` for CanCanCan or `Policy` for Pundit).
 
-3. **Interface and Styling**
-   - Style all views with **Bootstrap**.
-   - Add a navigation bar with links to the list of recipes and the form for creating a new recipe.
+3. **Define Authorization Rules**
+   - **Admin users** should be able to:
+     - Manage all recipes (create, edit, delete, view).
+     - Manage all users (optional if you want to extend functionality).
+   - **Regular users** should be able to:
+     - Create new recipes.
+     - Edit or delete **only their own** recipes.
+     - View all recipes.
 
-4. **CRUD Functionality**
-   - **Index view**: list all recipes showing their title, cook time, and difficulty.
-   - **Show view**: display full details of a recipe, including the rich text instructions.
-   - **New view**: form to add a new recipe.
-   - **Edit view**: form to edit an existing recipe.
-   - **Destroy action**: option to delete a recipe with confirmation, redirecting to the index.
+4. **Apply Authorization in Controllers**
+   - Add the proper checks in controllers to enforce permissions.
+   - Redirect users or show an error message when they try to access unauthorized actions.
+
+5. **User Interface**
+   - Update the navigation bar to show or hide options based on the user’s role.
+     - For example, only admins should see management links.
+   - Add friendly messages when a user attempts to perform an unauthorized action.
 
 ## Deliverables
-- A fully working Rails application implementing the recipe book.
-- All views styled with Bootstrap.
-- ActionText correctly set up for the `instructions` field.
-- Clean and organized code, following Rails conventions.
+- Recipe Book application extended with authorization using CanCanCan or Pundit.
+- Users have defined roles (`regular` and `admin`).
+- Regular users can only manage their own recipes.
+- Admins can manage all recipes.
+- Interface updated to reflect available actions according to user role.
 
->>>>>>> cc1520b6495afa49ad7440b4bfc2f64632f845a4
