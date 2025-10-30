@@ -1,35 +1,47 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Lab 06" %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
+    <title>RecipeBook</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "actiontext", "data-turbo-track": "reload" %>
+    
 
-    <%= yield :head %>
-
-    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
-    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
-
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
-
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <% if user_signed_in? %>
-      <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "btn btn-danger mt-3" %>
-    <% else %>
-    <%= link_to "Log in", new_user_session_path, class: "btn btn-primary mt-3" %>
+    <% unless devise_controller? %>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light px-4 shadow-sm">
+        <div class="container-fluid">
+          <%= link_to "🍳 Recipe Book", root_path, class: "navbar-brand fw-bold" %>
+
+          <div class="d-flex align-items-center">
+            <% if user_signed_in? %>
+              <span class="me-3 text-muted">Logged in as <%= current_user.email %></span>
+              <% if current_user.role_admin? %>
+                <%= link_to "Manage Recipes", recipes_path, class: "btn btn-outline-danger btn-sm me-2" %>
+              <% end %>
+              <%= button_to "Logout", destroy_user_session_path, method: :delete, data: { turbo: false }, class: "btn btn-primary btn-sm", form: { style: "display:inline;" } %>
+            <% else %>
+              <%= link_to "Login", new_user_session_path, class: "btn btn-outline-secondary btn-sm" %>
+            <% end %>
+          </div>
+        </div>
+      </nav>
     <% end %>
-    <%= yield %>
+
+    <div class="container mt-4">
+      <% if notice %>
+        <div class="alert alert-success"><%= notice %></div>
+      <% end %>
+      <% if alert %>
+        <div class="alert alert-danger"><%= alert %></div>
+      <% end %>
+
+      <%= yield %>
+    </div>
   </body>
 </html>

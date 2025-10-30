@@ -9,53 +9,54 @@
 #   end
 # db/seeds.rb
 
-# ===== Usuarios =====
+# ===== Users =====
 User.create!([
   { email: "admin@example.com", password: "123456", role: :admin },
-  { email: "juan@example.com",  password: "123456", role: :normal },
-  { email: "maria@example.com", password: "123456", role: :normal }
+  { email: "pedro@example.com", password: "123456", role: :normal },
+  { email: "juan@example.com", password: "123456", role: :normal }
 ])
 
-puts "✅ Usuarios creados: #{User.count}"
+puts "Users created: #{User.count}"
 
-# ===== Recetas =====
+# ===== Recipes =====
 Recipe.create!([
   {
-    title: "Spaghetti a la bolognesa",
-    cook_time: 30,
-    difficulty: "medium",
-    instructions: "Cocina la pasta al dente. En otra olla, sofríe cebolla, ajo y carne molida. Agrega salsa de tomate y condimenta con sal y orégano. Mezcla con la pasta y sirve con queso rallado.",
+    title: "Agua hervida",
+    cook_time: 5,
+    difficulty: "easy",
+    instructions: "Ponle empeño: agarra una olla, échale agua (ojalá de la llave, no de la piscina), prende la cocina y espera a que hierva. Cuando veas burbujitas (o el hervidor se apague en su defecto), felicítate: lo lograste. No todos llegan tan lejos en la vida.",
+    user: User.find_by(email: "pedro@example.com")
+  },
+  {
+    title: "Plátano con manjar",
+    cook_time: 2,
+    difficulty: "easy",
+    instructions: "Pelai el plátano con la elegancia que te caracteriza, le echai una cucharada generosa de manjar arriba y te lo comís con orgullo. 
+                    Alta cocina chilena, papá. No se necesita más.",
     user: User.find_by(email: "juan@example.com")
   },
   {
-    title: "Ensalada César",
+    title: "Completo italiano",
     cook_time: 10,
-    difficulty: "easy",
-    instructions: "Lava y corta la lechuga romana. Prepara el aderezo con mayonesa, mostaza, ajo y jugo de limón. Agrega crutones y queso parmesano. Mezcla todo y sirve frío.",
-    user: User.find_by(email: "maria@example.com")
-  },
-  {
-    title: "Lomo al horno",
-    cook_time: 60,
-    difficulty: "hard",
-    instructions: "Sella el lomo en sartén con aceite caliente. Luego hornéalo a 180°C por 45 minutos con vino tinto, cebolla y zanahoria. Deja reposar antes de cortar y servir.",
-    user: User.find_by(email: "juan@example.com")
-  },
-  {
-    title: "Papas doradas",
-    cook_time: 25,
-    difficulty: "easy",
-    instructions: "Corta las papas en cubos. Fríelas hasta que estén doradas. Condimenta con sal, romero y ajo en polvo. Sirve calientes.",
-    user: User.find_by(email: "maria@example.com")
-  },
-  {
-    title: "Tiramisú",
-    cook_time: 45,
     difficulty: "medium",
-    instructions: "Prepara café fuerte. Mezcla queso mascarpone con azúcar y yemas. Remoja galletas de champaña en café y forma capas con la crema. Refrigera 3 horas y espolvorea cacao antes de servir.",
+    instructions: "Sácate un pan de hotdog bien apirulado, unas salchichas de chillán, y encima le tirai la palta como si fuerai chef. 
+                    Después mayo, tomate, y si querís un toque pro, un chorrito de ají.
+                    Si creí que el Boris debería tener un segundo periodo, le podi echar ketchup pa que nadie quiera comer.
+                    ... Y saabe perro, caballo.",
+    user: User.find_by(email: "pedro@example.com")
+  },
+  {
+    title: "Mejor preentreno ever",
+    cook_time: 2,
+    difficulty: "easy",
+    instructions: "Agarrai una marraqueta, la partes como si estuvierai en la última cena y después la ahuecai.
+                    Con una bolsa de manjar, rellenai la marraqueta a gusto, y pa adentro nomas.
+                    Con eos carbohidratos y esa azucar, vas a quedar #ModoBestia en el gym.",
     user: User.find_by(email: "juan@example.com")
   }
 ])
 
-puts "✅ Recetas creadas: #{Recipe.count}"
-puts "🌱 Seed completado con éxito"
+puts "Recipes created: #{Recipe.count}"
+puts "Seed listo"
+
+
