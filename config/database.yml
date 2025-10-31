@@ -84,6 +84,7 @@ production:
     database: lab_06_production
     username: lab_06
     password: <%= ENV["LAB_06_DATABASE_PASSWORD"] %>
+    host: db
   cache:
     <<: *primary_production
     database: lab_06_production_cache

@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: lab_06
+      POSTGRES_DB: lab_06_production
+    volumes:
+      - ./pg_data:/var/lib/postgresql/data
+
+  web:
+    build: .
+    command: bin/rails server -b 0.0.0.0
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      RECIPE_LAB_06_DATABASE_PASSWORD: password
+      SECRET_KEY_BASE: c49c28668b7c1efc05343d23bc0c6bf3549b75d2ec8617a43371786f1fc922e69e0be505246913bf348cb2dc901fac1b2f5107d874cb93d103419448ff61e34b
+
+volumes:
+  pgdata:
