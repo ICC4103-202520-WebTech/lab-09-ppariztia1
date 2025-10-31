@@ -16,10 +16,10 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      - db
+      - localhost
     environment:
       RECIPE_LAB_06_DATABASE_PASSWORD: password
-      SECRET_KEY_BASE: c49c28668b7c1efc05343d23bc0c6bf3549b75d2ec8617a43371786f1fc922e69e0be505246913bf348cb2dc901fac1b2f5107d874cb93d103419448ff61e34b
+      SECRET_KEY_BASE: 229bee1d0c5a5c4e650a9761919bf85d7c9d9b36e00cc4d812cd05b1de67c51b8c841554d68a409b3d3d72f3eff9a58909aaef1e550c0a2eac44060ac53abeea
 
 volumes:
   pgdata:
