@@ -25,8 +25,9 @@ proxy:
 registry:
   # Specify the registry server, if you're not using Docker Hub
   server: registry.digitalocean.com/registryweb
-  username: dop_v1_273c19b62f3bf8394636c9ed42341121d051c39259c78dd21d77c0a8f7196f77
-  password: dop_v1_273c19b62f3bf8394636c9ed42341121d051c39259c78dd21d77c0a8f7196f77
+  username: <%= ENV["DOCKER_USERNAME"] %>
+  password: <%= ENV["DOCKER_PASSWORD"] %>
+
 
 # Inject ENV variables into containers (secrets come from .kamal/secrets).
 env:
