@@ -36,6 +36,9 @@ env:
     - RAILS_MASTER_KEY = 463d709032ea0aa238fdbae76bd40605
 
 builder:
+  local:
+    context: /home/arizt/lab-08-ppariztia1
+    dockerfile: /home/arizt/lab-08-ppariztia1/Dockerfile
   remote:
     arch: amd64
 
