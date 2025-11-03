@@ -36,9 +36,6 @@ env:
     - RAILS_MASTER_KEY = 463d709032ea0aa238fdbae76bd40605
 
 builder:
-  local:
-    context: /home/arizt/lab-08-ppariztia1
-    dockerfile: /home/arizt/lab-08-ppariztia1/Dockerfile
   remote:
     arch: amd64
 
@@ -77,8 +74,8 @@ asset_path: /rails/public/assets
 
 # Configure the image builder.
 builder:
-  arch: amd64
   remote: "root@167.172.222.171"
+  arch: amd64
   #
   # # Pass arguments and secrets to the Docker build process
   # args:
