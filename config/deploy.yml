@@ -7,7 +7,7 @@ image: ppariztia1/lab_06
 # Deploy to these servers.
 servers:
   web:
-    - 167.172.222.171
+    - root@167.172.222.171
   # job:
   #   hosts:
   #     - 192.168.0.1
@@ -24,24 +24,20 @@ proxy:
 # Credentials for your image host.
 registry:
   # Specify the registry server, if you're not using Docker Hub
-  # server: registry.digitalocean.com / ghcr.io / ...
-  username: ppariztia1
-
-  # Always use an access token rather than real password when possible.
-  password:
-    - KAMAL_REGISTRY_PASSWORD
+  server: registry.digitalocean.com/registryweb
+  username: dop_v1_273c19b62f3bf8394636c9ed42341121d051c39259c78dd21d77c0a8f7196f77
+  password: dop_v1_273c19b62f3bf8394636c9ed42341121d051c39259c78dd21d77c0a8f7196f77
 
 # Inject ENV variables into containers (secrets come from .kamal/secrets).
 env:
-  secret:
-    - RAILS_MASTER_KEY
   clear:
     RAILS_ENV: production
-    DB_HOST: <%= ENV.fetch("DB_HOST", "localhost") %>
-    LAB_06_DATABASE_PASSWORD: <%= ENV.fetch("LAB_06_DATABASE_PASSWORD", "password") %>
-    # Run the Solid Queue Supervisor inside the web server's Puma process to do jobs.
-    # When you start using multiple servers, you should split out job processing to a dedicated machine.
-    SOLID_QUEUE_IN_PUMA: true
+  secret:
+    - RAILS_MASTER_KEY = 463d709032ea0aa238fdbae76bd40605
+
+builder:
+  remote:
+    arch: amd64
 
     # Set number of processes dedicated to Solid Queue (default: 1)
     # JOB_CONCURRENCY: 3
